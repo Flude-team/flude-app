@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      # No real Clerk keys are configured in CI (see .env.example) -- the
+      # build only statically analyzes/prerenders routes, and /account is a
+      # dynamic (server-rendered) route, so `next build` doesn't need a real
+      # publishableKey to succeed. Runtime behavior against real Clerk is
+      # not exercised here.
+      - run: npm run build
