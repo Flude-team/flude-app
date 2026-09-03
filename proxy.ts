@@ -1,12 +1,9 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
-const isProtectedRoute = createRouteMatcher(["/account(.*)"]);
-
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect();
-  }
-});
+// Auth checks now live per-page (see app/account/.../page.tsx) per Clerk's
+// resource-based auth guidance -- this just makes Clerk's auth() available
+// to the rest of the app, it does not gate any route itself.
+export default clerkMiddleware();
 
 export const config = {
   matcher: [
