@@ -22,6 +22,26 @@ npm install
 npm run dev
 ```
 
+## Deploying to Netlify
+
+Not yet done — needs the owner's Netlify/Clerk/registrar access, so this is written as exact
+steps rather than performed:
+
+1. Netlify dashboard → **Add new site → Import an existing project** → pick
+   `Flude-team/flude-app`. Netlify's own Next.js Runtime auto-detects the App Router build; a
+   `netlify.toml` in this repo pins the Node version (`20`, matching CI) and the build command
+   explicitly so the deploy doesn't depend on Netlify's shifting defaults.
+2. Site settings → **Environment variables**, add the same two Clerk keys `.env.local` uses
+   locally (real values, from the Clerk Dashboard, not the `.env.example` placeholders):
+   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`.
+3. Site settings → **Domain management → Add a domain** → `app.flude.guide`. Netlify gives a
+   CNAME/ALIAS target; add that record at whichever DNS host currently manages `flude.guide`
+   (Cloudflare, per earlier decisions — DNS-only/grey-cloud is fine, this doesn't require
+   moving the whole domain's nameservers to Netlify).
+4. Enable the **API Keys** feature for this Clerk application in the Clerk Dashboard first (see
+   `DEL-B41` — a separate one-time toggle, not a code change) so the "API Keys" tab actually
+   appears in `<UserProfile />` once real users sign in.
+
 ## Stack
 
 - Next.js (App Router)
