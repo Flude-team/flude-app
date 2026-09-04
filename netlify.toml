@@ -4,6 +4,12 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Not a real secret -- NEXT_PUBLIC_* vars are designed to be inlined into
+  # the client bundle by Next.js itself. Netlify's secrets scanner doesn't
+  # know that convention and flags any env var it finds in the build output,
+  # so it false-positives on this one every time. CLERK_SECRET_KEY (the
+  # actual secret) is intentionally left scanned.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
