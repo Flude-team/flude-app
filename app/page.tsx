@@ -43,7 +43,12 @@ export default function Home() {
       </Link>
       <p style={{ marginTop: "1.5rem", fontSize: "0.9rem" }}>
         Follow progress on the{" "}
-        <a href="https://blog.flude.guide" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://blog.flude.guide"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#2563eb" }}
+        >
           Flude blog
         </a>
         .
