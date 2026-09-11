@@ -51,6 +51,10 @@ export default function Home() {
         >
           Flude blog
         </a>
+        . Read our{" "}
+        <Link href="/privacy" style={{ color: "#2563eb" }}>
+          Privacy Policy
+        </Link>
         .
       </p>
     </main>
