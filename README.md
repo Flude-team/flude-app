@@ -1,5 +1,8 @@
 # Flude account
 
+<!-- UNDER-CONSTRUCTION-NOTICE -->
+> **Flude is under construction.** Features, commands, limits and behavior described here may be incomplete or change without notice.
+
 Minimal account-management frontend for Flude. Sign in with your GitHub, GitLab, or
 Bitbucket account and create an API key to use with the [Flude GitHub
 Action](https://github.com/Flude-team/flude-action) (or the GitLab CI / Bitbucket Pipe

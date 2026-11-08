@@ -22,7 +22,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-        <body>{children}</body>
+        <body>
+          {/* UNDER-CONSTRUCTION-NOTICE */}
+          <div className="flude-under-construction-banner" data-flude-notice="under-construction">
+            Flude is under construction. Features, commands, limits and behavior described here may be incomplete or change without notice.
+          </div>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
