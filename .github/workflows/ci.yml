@@ -32,16 +32,3 @@ jobs:
       # builds, fails on `rm -rf .next && npx tsc --noEmit` -- exactly what
       # a fresh CI checkout does, which is how this was caught.
       - run: npx tsc --noEmit
-
-      - name: Notify Telegram
-        if: always()
-        uses: appleboy/telegram-action@221e6b684967abe813051ee4a37dd61770a83ad3 # v1.0.1
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: |
-            Repository: ${{ github.repository }}
-            Workflow: ${{ github.workflow }}
-            Status: ${{ job.status == 'success' && '🟢 SUCCESS' || job.status == 'cancelled' && '🟡 CANCELLED' || '🔴 FAILURE' }}
-            Commit: ${{ github.sha }}
-            Author: ${{ github.actor }}
